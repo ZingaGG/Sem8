@@ -21,6 +21,41 @@ int[,] CreateRandomMatrix(int m, int n)
     return array;
 }
 
+int[,,] TripleMatrixCreate(int m, int n, int l)
+{
+
+    int[,,] Triple = new int[m,n,l];
+    int Digit = 10;
+
+    for (int i = 0; i < Triple.GetLength(0); i++)
+    {
+        for (int j = 0; j < Triple.GetLength(1); j++)
+        {
+            for (int k = 0; k < Triple.GetLength(2); k++)
+            {
+                Triple[i,j,k] = Digit;
+                Digit++;
+            }
+        }
+    }
+
+    return Triple;
+}
+
+void PrintTripleMatrix(int[,,] Triple)
+{
+    for (int i = 0; i < Triple.GetLength(0); i++)
+    {
+        for (int j = 0; j < Triple.GetLength(1); j++)
+        {
+            for (int k = 0; k < Triple.GetLength(2); k++)
+            {
+                System.Console.WriteLine($"Digit with index{(i,j,k)} = {Triple[i,j,k]}");
+            }
+        }
+    }  
+}
+
 void PrintMatrix(int[,] array)
 {
     System.Console.WriteLine();
@@ -96,6 +131,8 @@ int[,]? MatrixMultiply(int[,] a, int[,] b)
 }
 
 
+
+
 // Task 1 Задайте двумерный массив. Напишите программу, которая упорядочит по возрастанию элементы каждой строки двумерного массива.
 /*
 int[,] Matrix = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
@@ -116,8 +153,8 @@ PrintMatrix(Matrix);
 System.Console.WriteLine("Index of Min Row = " + MatrixMinRow(Matrix));
 */
 
-// Task 3 
-
+// Task 3 Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+/*
 int[,] Matrix = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
 
 PrintMatrix(Matrix);
@@ -131,3 +168,10 @@ int[,]? Result = MatrixMultiply(Matrix,Matrix2);
 System.Console.WriteLine("Result Matrix = ");
 
 PrintMatrix(Result);
+*/
+
+// Task 4  Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+
+int[,,] Triple = TripleMatrixCreate(2,2,2);
+
+PrintTripleMatrix(Triple);
