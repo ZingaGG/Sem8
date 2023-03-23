@@ -1,4 +1,6 @@
-﻿int TakeDigit(string a)
+﻿using System.Linq;
+
+int TakeDigit(string a)
 {
     System.Console.WriteLine(a);
     int result = Int32.Parse(System.Console.ReadLine());
@@ -54,6 +56,23 @@ int[,] MatrixSort(int[,] matrix)
     return matrix;
 }
 
+int MatrixMinRow(int[,] matrix)
+{
+
+    int[] SumsArray = new int[matrix.GetLength(0)];
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            SumsArray[i] += matrix[i,j];
+        }   
+    }
+
+    int Result = Array.IndexOf(SumsArray, SumsArray.Min());
+    return Result;
+}
+
 
 // Task 1 Задайте двумерный массив. Напишите программу, которая упорядочит по возрастанию элементы каждой строки двумерного массива.
 /*
@@ -65,3 +84,10 @@ Matrix = MatrixSort(Matrix);
 
 PrintMatrix(Matrix);
 */
+
+// Task 2 Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+int[,] Matrix = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
+
+PrintMatrix(Matrix);
+
+System.Console.WriteLine("Index of Min Row = " + MatrixMinRow(Matrix));
