@@ -171,7 +171,56 @@ PrintMatrix(Result);
 */
 
 // Task 4  Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
-
+/*
 int[,,] Triple = TripleMatrixCreate(2,2,2);
 
 PrintTripleMatrix(Triple);
+*/
+
+// Task 5 Спиральный массив 4 на 4
+
+    int[,] spiral = new int[4, 4];
+    int count = 1;
+    int rowStart = 0;
+    int rowEnd = 3;
+    int colStart = 0;
+    int colEnd = 3;
+    
+    while (rowStart <= rowEnd && colStart <= colEnd)
+    {
+        for (int i = colStart; i <= colEnd; i++)
+        {
+            spiral[rowStart, i] = count;
+            count++;
+        }
+        rowStart++;
+
+        for (int i = rowStart; i <= rowEnd; i++)
+        {
+            spiral[i, colEnd] = count;
+            count++;
+        }
+        colEnd--;
+
+        if (rowStart <= rowEnd)
+        {
+            for (int i = colEnd; i >= colStart; i--)
+            {
+                spiral[rowEnd, i] = count;
+                count++;
+            }
+            rowEnd--;
+        }
+
+        if (colStart <= colEnd)
+        {
+            for (int i = rowEnd; i >= rowStart; i--)
+            {
+                spiral[i, colStart] = count;
+                count++;
+            }
+            colStart++;
+        }
+    }
+
+PrintMatrix(spiral);
