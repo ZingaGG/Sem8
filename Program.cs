@@ -73,6 +73,28 @@ int MatrixMinRow(int[,] matrix)
     return Result;
 }
 
+int[,]? MatrixMultiply(int[,] a, int[,] b)
+{
+    if((a.GetLength(0) == b.GetLength(0)) && (a.GetLength(1) == b.GetLength(1)))
+    {
+        int[,] Result = new int[a.GetLength(0), a.GetLength(1)];
+        for (int i = 0; i < Result.GetLength(0); i++)
+        {
+            for (int j = 0; j < Result.GetLength(1); j++)
+            {
+                Result[i,j] = a[i,j] * b[i,j];
+            }
+        }
+
+        return Result;
+    }
+    else
+    {
+        System.Console.WriteLine("Matrix's sizes are diffrent!");
+        return null;
+    }
+}
+
 
 // Task 1 Задайте двумерный массив. Напишите программу, которая упорядочит по возрастанию элементы каждой строки двумерного массива.
 /*
@@ -86,8 +108,26 @@ PrintMatrix(Matrix);
 */
 
 // Task 2 Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+/*
 int[,] Matrix = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
 
 PrintMatrix(Matrix);
 
 System.Console.WriteLine("Index of Min Row = " + MatrixMinRow(Matrix));
+*/
+
+// Task 3 
+
+int[,] Matrix = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
+
+PrintMatrix(Matrix);
+
+int[,] Matrix2 = CreateRandomMatrix(TakeDigit("Input rows = "), TakeDigit("Input columns = "));
+
+PrintMatrix(Matrix2);
+
+int[,]? Result = MatrixMultiply(Matrix,Matrix2);
+
+System.Console.WriteLine("Result Matrix = ");
+
+PrintMatrix(Result);
